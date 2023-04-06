@@ -1,4 +1,9 @@
 # Shell Scripts for use with QIIME 
+These are just very simple shell scripts that wrap the QIIME commands developed by Rob Knights's group. They primarily save time on typing but are particularly helpful in the case of having many datasets, where you can utilize looping, for example:
+```bash
+cd folder/with/files
+for file in *; do bash shellscript.sh $file; done
+```
 
 ### Requirements 
 - QIIME2-2019.10 and up 
@@ -11,6 +16,11 @@ bash shellscript.sh
 the first run is an `echo` command that will prompt for what inputs to utilize
 
 ### Details about each script
+
+0. To start, import your features x samples .tsv file. and convert to .qza. Note, this .tsv should not have a "taxonomy" column at the end.
+```bash
+bash ../../../fast-16s-analysis/shell_scripts/1-qiime-tools-import.sh Trios_ASV_table_Silva_v138_1.tsv 
+```
 
 1. To make a taxa summary plot (stacked column chart showing taxonomy) 
   - Make a taxonomy.tsv file, which should contain the header `Feature ID`, `Taxon`
