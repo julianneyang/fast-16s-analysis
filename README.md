@@ -11,7 +11,7 @@ for file in *; do bash shellscript.sh $file; done
 ### Usage 
 Run as in any shell script, i.e. 
 ```shell
-bash shellscript.sh
+bash /relative/filepath/to/shellscript.sh
 ``` 
 the first run is an `echo` command that will prompt for what inputs to utilize
 
@@ -21,8 +21,13 @@ the first run is an `echo` command that will prompt for what inputs to utilize
 ```bash
 bash ../../../fast-16s-analysis/shell_scripts/1-qiime-tools-import.sh Trios_ASV_table_Silva_v138_1.tsv 
 ```
+1. To extract the counts for samples that belong to specific groups, use `filter-ASV-by-metadata.sh` $ASV.qza $Metadata $Metadata-column $Metadata-column-value. Here, I'm extracting the counts for the samples which belong only to my mice which fulfill the criteria of "JAX" for "Background".
 
-1. To make a taxa summary plot (stacked column chart showing taxonomy) 
+```bash
+bash ../../../../fast-16s-analysis/shell_scripts/filter-ASV-by-metadata.sh Baseline_ASV_table_Silva_v138_1.qza Baseline_Metadata.tsv Background JAX
+```
+
+2. To make a taxa summary plot (stacked column chart showing taxonomy) 
   - Make a taxonomy.tsv file, which should contain the header `Feature ID`, `Taxon`
   ![image](https://user-images.githubusercontent.com/62775127/230488576-79046180-839c-44d8-a2a5-48f26ec52d1d.png)
   - Import the taxonomy.tsv file with `import-taxonomy.sh`. 
